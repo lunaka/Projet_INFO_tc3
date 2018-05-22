@@ -1,2 +1,3 @@
 # Projet_INFO_tc3
-Mofan putain
+
+Coucou, je m'appelle ZHANG Mofan, je suis vraiment un putain.
