@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="INF tc3 - Projet">
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <title> Editeur de scène </title>
+</head>
+
+<body>
+    <h1>Editeur de scène</h1>
+    <h2>INF tc3 - Projet d'application WEB</h2>
+    <div id="Scène">
+        Scène<br>
+        <canvas id="Canvas" style="width:600px; height:600px; border:1px solid #ddd"></canvas>
+    </div>
+    <div id="Eléments">
+        Eléments
+        <br>
+        <figure id="Arbre"><img src="Arbre.png" alt="Arbre"><figcaption>Arbre</figcaption></figure>
+        <figure id="Pyramid"><img src="Pyramid.png" alt="Pyramid"><figcaption>Pyramid</figcaption></figure>
+        <figure id="Maison"><img src="Maison.png" alt="Maison"><figcaption>Maison</figcaption></figure>
+        <!--
+        <div>
+            <figure><img src="Arbre.png" alt="Arbre"><figcaption>Arbre</figcaption></figure>
+        </div>
+        <div>
+            <figure><img src="Pyramid.png" alt="Pyramid"><figcaption>Pyramid</figcaption></figure>
+        </div>
+        <div>
+            <figure><img src="Maison.png" alt="Maison"><figcaption>Maison</figcaption></figure>
+        </div>
+        <button id="Arbre" name="button" value="Arbre" onclick="">Arbre<br><img id="img_arbre" src="Arbre.png"></button>
+        <button id="Pyramid" name="button" value="Pyramid" onclick="">Pyramid<br><img id="img_pyramid" src="Pyramid.png"></button>
+        <button id="Maison" name="button" value="Maison" onclick="">Maison<br><img id="img_maison" src="Maison.png"></button>
+    -->
+    </div>
+    <div id="form">
+        <form action="/service" method="POST">
+            <fieldset>
+                <legend>Attributs</legend>
+                <label>Eléments: <select id="Choix_éléments" name="Eléments">
+                    <option>Arbre</option>
+                    <option>Pyramid</option>
+                    <option>Maison</option>
+                </select></label>
+                <label>alpha: <input id="alpha" type="number" name="alpha" /></label>
+                <label>x: <input id="x" type="number" name="x" /></label>
+                <label>y: <input id="y" type="number" name="y" /></label>
+                <label>z: <input id="z" type="number" name="z" /></label>
+                <label>Taille: <input id="Taille" type="number" name="taille"/></label>
+                <label>
+                    Couleur: <select id="Couleur" name="Couleur">
+                        <option>Rouge</option>
+                        <option>Vert</option>
+                        <option>Bleu</option>
+                        <option>Orange</option>
+                        <option>Rose</option>
+                    </select></label><br>
+                <input type="submit" value="Envoyer">
+            </fieldset>
+        </form>
+    </div>
+    <!--
+    <script type="text/javascript">
+    function pompup(){
+        var alpha=prompt("alpha=","");
+        var x=prompt()
+    }
+    </script>
+-->
+        <!--
+        <script>
+        var c=document.getElementById("Scène");
+        var ctx=c.getContext("2d");
+        canvas.onclick=function(e){
+            e=e||event;
+            var x=e.clientX-canvas.offsetLeft;
+            var y=e.clientY-canvas.offsetTop;
+        }
+        </script>
+        <script>
+        function button_onclick(src){
+            var c=document.getElementById("Scène");
+            var ctx=c.getContext("2d");
+            var img = new Image();
+            ctx.drawImage(img,100,100);
+            }
+        }
+
+        </script>
+    -->
+</body>
+
+</html>
