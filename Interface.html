@@ -22,22 +22,13 @@
         <figure id="Pyramid"><img src="Pyramid.png" alt="Pyramid"><figcaption>Pyramid</figcaption></figure>
         <figure id="Maison"><img src="Maison.png" alt="Maison"><figcaption>Maison</figcaption></figure>
         <!--
-        <div>
-            <figure><img src="Arbre.png" alt="Arbre"><figcaption>Arbre</figcaption></figure>
-        </div>
-        <div>
-            <figure><img src="Pyramid.png" alt="Pyramid"><figcaption>Pyramid</figcaption></figure>
-        </div>
-        <div>
-            <figure><img src="Maison.png" alt="Maison"><figcaption>Maison</figcaption></figure>
-        </div>
         <button id="Arbre" name="button" value="Arbre" onclick="">Arbre<br><img id="img_arbre" src="Arbre.png"></button>
         <button id="Pyramid" name="button" value="Pyramid" onclick="">Pyramid<br><img id="img_pyramid" src="Pyramid.png"></button>
         <button id="Maison" name="button" value="Maison" onclick="">Maison<br><img id="img_maison" src="Maison.png"></button>
     -->
     </div>
     <div id="form">
-        <form action="/service" method="POST">
+        <form action="demo_form.php" method="POST">
             <fieldset>
                 <legend>Attributs</legend>
                 <label>Eléments: <select id="Choix_éléments" name="Eléments">
@@ -50,6 +41,9 @@
                 <label>y: <input id="y" type="number" name="y" /></label>
                 <label>z: <input id="z" type="number" name="z" /></label>
                 <label>Taille: <input id="Taille" type="number" name="taille"/></label>
+                <label>Couleur: <input id="Couleur" type="color" name="couleur"></label>
+                <input id="Réinitialiser" type="reset" value="Réinitialiser">
+                <!--
                 <label>
                     Couleur: <select id="Couleur" name="Couleur">
                         <option>Rouge</option>
@@ -58,10 +52,16 @@
                         <option>Orange</option>
                         <option>Rose</option>
                     </select></label><br>
+                -->
                 <input type="submit" value="Envoyer">
             </fieldset>
         </form>
     </div>
+    <!--
+    <script language="javascript">
+    var Elements = document.getElementById("Choix_éléments").
+    </script>
+-->
     <!--
     <script type="text/javascript">
     function pompup(){
