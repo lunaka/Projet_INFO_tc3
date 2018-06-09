@@ -1,0 +1,130 @@
+#################################################################
+
+#Maison
+
+#################################################################
+
+class Maison(ComposedArtifact):
+    def __init__(self,*args,**kwargs):
+        
+        ComposedArtifact.__init__(self,11,*args,**kwargs)
+        U = vec3(1,0,0)
+        V = vec3(0,1,0) # axe sur lequel il sera projété
+        C = vec3(0,0,0)
+        l = 0.3
+        
+        cube = Cube(C, U, V, l, diffuse=rgb(0.65,0.27,0.25), mirror=0, specular=0)
+        S = vec3(0,0.5,0.5) # Coordonnées entre -1 et 1 (x = horizontal, y = verticale, z = sens de la page)
+        vertices = [vec3(-0.2,0.2,-0.2), vec3(0.2,0.2,-0.2), vec3(0.2,0.2,0.2), vec3(-0.2,0.2,0.2)]
+        base = Polygon2(vertices, 1, diffuse=rgb(0.5,0.5,0), mirror=0, specular=0)
+        
+        pyr = Pyramid(base, S, diffuse=rgb(0.9,0.5,0.1), mirror=0, specular=0)
+        
+        for j in range (6):
+            self[j]=cube[j]
+        for j in range (5):
+            self[j+6]=pyr[j]
+            
+scene = Scene('Maison', 0, 1)
+scene.append(LightSource(vec3(-1., 2, -3), 1))
+scene.append(Plane(vec3(0,-0.1,0), vec3(0,1,0)))
+scene.append(Maison(diffuse=rgb(0.9,0.5,0.1), mirror=0, specular=0))
+
+scene.initialize(E=vec3(0,2,-10)).trace().save_image()
+pass
+
+#################################################################
+
+#Voiture
+
+#################################################################
+
+class Voiture(ComposedArtifact):
+    def __init__(self,*args,**kwargs):
+        
+        ComposedArtifact.__init__(self,42,*args,**kwargs)
+
+        P = [vec3(-0.3,0.1,-0.2), vec3(0.3,0.1,-0.2), vec3(-0.3,0.1,0.2), vec3(0.3,0.1,0.2)]
+        V = vec3(0,0,1) # axe sur lequel il sera projété
+        r = 0.1
+        h1 = 0.1
+        h2 = -0.1
+
+        roue0 = Cylinder(P[0], V, r, h2, diffuse=rgb(124,117,117), mirror=0, specular=0)
+        roue1 = Cylinder(P[1], V, r, h2, diffuse=rgb(124,117,117), mirror=0, specular=0)
+        roue2 = Cylinder(P[2], V, r, h1, diffuse=rgb(124,117,117), mirror=0, specular=0)
+        roue3 = Cylinder(P[3], V, r, h1, diffuse=rgb(124,117,117), mirror=0, specular=0)
+
+        U = vec3(1,0,0)
+        V = vec3(0,0,1) # axe sur lequel il sera projété
+        C1 = vec3(0,0.3,0)
+        l1 = 0.4
+
+        C2 = vec3(0.3,0.2,-0.1)
+        l2 = 0.2
+        C3 = vec3(0.3,0.2,0.1)
+        C4 = vec3(-0.3,0.2,0.1)
+        C5 = vec3(-0.3,0.2,-0.1)
+        
+        cube1 = Cube(C1, U, V, l1, diffuse=rgb(1,0,0), mirror=0, specular=0)
+        cube2 = Cube(C2, U, V, l2, diffuse=rgb(1,0,0), mirror=0, specular=0)
+        cube3 = Cube(C3, U, V, l2, diffuse=rgb(1,0,0), mirror=0, specular=0)
+        cube4 = Cube(C4, U, V, l2, diffuse=rgb(1,0,0), mirror=0, specular=0)
+        cube5 = Cube(C5, U, V, l2, diffuse=rgb(1,0,0), mirror=0, specular=0)
+
+        for j in range(3):
+            self[j]=roue0[j]
+        for j in range(3):
+            self[j+3]=roue1[j]
+        for j in range(3):
+            self[j+6]=roue2[j]        
+        for j in range(3):
+            self[j+9]=roue3[j]
+        for j in range(6):
+            self[j+12]=cube1[j]
+        for j in range(6):
+            self[j+18]=cube2[j]
+        for j in range (6):
+            self[j+24]=cube3[j]
+        for j in range (6):
+            self[j+30]=cube4[j]
+        for j in range (6):
+            self[j+36]=cube5[j]
+        
+scene = Scene('Voiture', 0, 1)
+scene.append(LightSource(vec3(-1., 2, -3), 1))
+scene.append(Plane(vec3(0,-0.1,0), vec3(0,1,0)))
+scene.append(Voiture(diffuse=rgb(0.95,0.73,0.43), mirror=0, specular=0))
+scene.initialize(E=vec3(0,2,-10)).trace().save_image()
+pass
+
+#################################################################
+
+#Arbre
+
+#################################################################
+
+class Arbre(ComposedArtifact):
+    def __init__(self,P,*args,**kwargs):
+        ComposedArtifact.__init__(self,4,*args,**kwargs)
+        # Coordonnées entre -1 et 1 (x = horizontal, y = verticale, z = sens de la page)
+        V = vec3(0,1,0) # axe sur lequel il sera projété
+        r = 0.1
+        h = 4*r
+        cyl = Cylinder(P, V, r, h, diffuse=rgb(0.9,0.5,0.1), mirror=0, specular=0)
+        
+        center = P + vec3(0,h,0) # Coordonnées entre -1 et 1 (x = horizontal, y = verticale, z = sens de la page)
+        radius = 2*r
+        sph = Sphere(center, radius, diffuse=rgb(0.1,0.9,0.1), mirror=0, specular=0)
+
+        for j in range(3):
+            self[j]= cyl[j]
+        self[3] = sph
+    
+scene = Scene('Arbre', 0, 1)
+scene.append(LightSource(vec3(-2., 1, -2), 1))
+scene.append(Plane(vec3(0,-0.1,0), vec3(0,1,0)))
+scene.append(Arbre(vec3(0,0,0),diffuse=rgb(0.9,0.5,0.1), mirror=0, specular=0))
+
+scene.initialize(E=vec3(0,2,-10)).trace().save_image()
+pass
