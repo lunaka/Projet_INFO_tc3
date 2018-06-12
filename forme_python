@@ -14,8 +14,8 @@ class Maison(ComposedArtifact):
         l = 0.3
         
         cube = Cube(C, U, V, l, diffuse=rgb(0.65,0.27,0.25), mirror=0, specular=0)
-        S = vec3(0+x0,y0+0.5,z0+0.5) # Coordonnées entre -1 et 1 (x = horizontal, y = verticale, z = sens de la page)
-        vertices = [vec3(x0-0.2,y0+0.2,z0-0.2), vec3(x0+0.2,y0+0.2,z0-0.2), vec3(x0+0.2,y0+0.2,z0+0.2), vec3(x0-0.2,y0+0.2,z0+0.2)]
+        S = vec3(0+x0,y0+0.5,z0+0) # Coordonnées entre -1 et 1 (x = horizontal, y = verticale, z = sens de la page)
+        vertices = [vec3(x0-0.2,y0+0.15,z0-0.2), vec3(x0+0.2,y0+0.15,z0-0.2), vec3(x0+0.2,y0+0.15,z0+0.2), vec3(x0-0.2,y0+0.15,z0+0.2)]
         base = Polygon2(vertices, 1, diffuse=rgb(0.5,0.5,0), mirror=0, specular=0)
         
         pyr = Pyramid(base, S, diffuse=rgb(0.9,0.5,0.1), mirror=0, specular=0)
@@ -32,6 +32,7 @@ scene.append(Maison(0,0,0,diffuse=rgb(0.9,0.5,0.1), mirror=0, specular=0))
 
 scene.initialize(E=vec3(0,2,-10)).trace().save_image()
 pass
+
 
 #################################################################
 
