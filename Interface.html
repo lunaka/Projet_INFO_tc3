@@ -9,26 +9,30 @@
 </head>
 
 <body>
-    <h1>Editeur de scène</h1>
-    <h2>INF tc3 - Projet d'application WEB</h2>
-    <div id="Scène">
-        Scène<br>
-        <canvas id="Canvas" style="width:600px; height:600px; border:1px solid #ddd"></canvas>
-    </div>
-    <div id="Eléments">
-        Eléments
-        <br>
-        <figure id="Arbre"><img src="Arbre.png" alt="Arbre"><figcaption>Arbre</figcaption></figure>
-        <figure id="Pyramid"><img src="Pyramid.png" alt="Pyramid"><figcaption>Pyramid</figcaption></figure>
-        <figure id="Maison"><img src="Maison.png" alt="Maison"><figcaption>Maison</figcaption></figure>
-        <!--
-        <button id="Arbre" name="button" value="Arbre" onclick="">Arbre<br><img id="img_arbre" src="Arbre.png"></button>
-        <button id="Pyramid" name="button" value="Pyramid" onclick="">Pyramid<br><img id="img_pyramid" src="Pyramid.png"></button>
-        <button id="Maison" name="button" value="Maison" onclick="">Maison<br><img id="img_maison" src="Maison.png"></button>
-    -->
-    </div>
+    <header id="hr">
+        <h1>Editeur de scène</h1>
+        <h2>INF tc3 - Projet d'application WEB</h2>
+    </header>
+    <main id="mn">
+        <div id="Scène">
+            Scène<br>
+            <figure><img src="/image/scene_courante.png"></figure>
+            <!--
+            <canvas id="Canvas" style="width:600px; height:600px; border:1px solid #ddd"></canvas>
+        -->
+        </div>
+    </main>
+    <aside id="ae">
+        <div id="Eléments">
+            Eléments
+            <br>
+            <figure id="Arbre"><img src="Arbre.png" alt="Arbre"><figcaption>Arbre</figcaption></figure>
+            <figure id="Pyramid"><img src="Pyramid.png" alt="Pyramid"><figcaption>Pyramid</figcaption></figure>
+            <figure id="Maison"><img src="Maison.png" alt="Maison"><figcaption>Maison</figcaption></figure>
+        </div>
+    </aside>
     <div id="form">
-        <form action="demo_form.php" method="POST">
+        <form action="http://localhost:8080/service" method="POST">
             <fieldset>
                 <legend>Attributs</legend>
                 <label>Elément: <select id="Choix_éléments" name="Eléments">
@@ -41,22 +45,17 @@
                 <label>y: <input id="y" type="number" name="y" /></label>
                 <label>z: <input id="z" type="number" name="z" /></label>
                 <label>Taille: <input id="Taille" type="number" name="taille"/></label>
-                <label>Couleur: <input id="Couleur" type="color" name="couleur"></label>
-                <input id="Réinitialiser" type="reset" value="Réinitialiser">
                 <!--
-                <label>
-                    Couleur: <select id="Couleur" name="Couleur">
-                        <option>Rouge</option>
-                        <option>Vert</option>
-                        <option>Bleu</option>
-                        <option>Orange</option>
-                        <option>Rose</option>
-                    </select></label><br>
-                -->
+                <label>Couleur: <input id="Couleur" type="color" name="couleur"></label>
+            -->
+                <input id="Réinitialiser" type="reset" value="Réinitialiser">
                 <input type="submit" value="Envoyer">
             </fieldset>
         </form>
     </div>
+    <footer id="ftr">
+        <h3>Groupe B1a - Projet d'application WEB - INF tc3</h3>
+    </footer>
     <!--
     <script language="javascript">
     var Elements = document.getElementById("Choix_éléments").
