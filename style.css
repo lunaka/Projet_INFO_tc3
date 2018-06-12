@@ -1,0 +1,63 @@
+h1
+{
+	text-align: center;
+	color: rgb(227,30,174); /* www.colorpicker.com */
+	font-family: "Arial Black"; /* www.fontsquirrel.com */
+}
+h2
+{
+	text-align: center;
+	font-size: medium;
+	color: rgb(235,136,208);
+	font-family: "Arial Black";
+}
+#Scène
+{
+	text-align: left;
+	color: rgb(235,136,208);
+	font-family: "Arial";
+}
+#myCanvas
+{
+	float: left;
+	clear:both;
+}
+
+#Eléments
+{
+	margin: 10px 50px 50px 650px;
+	text-align: left;
+	color: rgb(235,136,208);
+	border: rgb(235,136,208) 2px solid;
+	font-family: "Arial";
+}
+
+.separator
+{
+	margin: 50px 50px 50px;
+	float: left;
+	text-align: center;
+	clear: none;
+  	padding: 3px
+
+}
+
+#form
+{
+	clear:left;
+	color: rgb(235,136,208);
+	font-family: "Arial";
+}
+
+#Choix_éléments, #alpha, #x, #y, #z, #Taille, #Couleur, #Réinitialiser
+{
+	float: center;
+	margin: 5px;
+	font-family: "Arial";
+}
+
+footer
+{
+	text-align: center;
+	color: rgb(217,15,116);
+}
