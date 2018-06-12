@@ -16,12 +16,21 @@
     <main id="mn">
         <div id="Scène">
             Scène<br>
-            <figure><img src="/image/scene_courante.png"></figure>
             <!--
-            <canvas id="Canvas" style="width:600px; height:600px; border:1px solid #ddd"></canvas>
+            <figure><img src="/image/scene_courante.png"></figure>
         -->
+            <canvas id="myCanvas" style="width:600px; height:600px; border:1px solid #ddd"></canvas>
         </div>
     </main>
+
+    <script type="text/javascript">
+    var c=document.getElementById("myCanvas");
+    var cxt=c.getContext("2d");
+    var img=new Image()
+    img.src="/image/scene_courante.png"
+    cxt.drawImage(img,0,0);
+</script>
+
     <aside id="ae">
         <div id="Eléments">
             Eléments
@@ -39,12 +48,12 @@
                     <option>Arbre</option>
                     <option>Pyramid</option>
                     <option>Maison</option>
-                </select></label>
-                <label>alpha: <input id="alpha" type="number" name="alpha" /></label>
-                <label>x: <input id="x" type="number" name="x" /></label>
-                <label>y: <input id="y" type="number" name="y" /></label>
-                <label>z: <input id="z" type="number" name="z" /></label>
-                <label>Taille: <input id="Taille" type="number" name="taille"/></label>
+                </select></label><br>
+                <!--<label>alpha: <input id="alpha" type="number" name="alpha" /></label>-->
+                <label>x: <input id="x" type="number" name="x" /></label><br>
+                <label>y: <input id="y" type="number" name="y" /></label><br>
+                <label>z: <input id="z" type="number" name="z" /></label><br>
+                <label>Taille: <input id="Taille" type="number" name="taille"/></label><br>
                 <!--
                 <label>Couleur: <input id="Couleur" type="color" name="couleur"></label>
             -->
@@ -56,6 +65,7 @@
     <footer id="ftr">
         <h3>Groupe B1a - Projet d'application WEB - INF tc3</h3>
     </footer>
+
     <!--
     <script language="javascript">
     var Elements = document.getElementById("Choix_éléments").
@@ -90,6 +100,63 @@
 
         </script>
     -->
+    <!--
+    <script>
+    /*
+** Mise Ã  jour de l'image et des contrÃ´les sur rÃ©ception d'une scÃ¨ne
+*/
+var update_image = function() {
+  data = JSON.parse(this.responseText);
+  scene = JSON.parse(data.serial);
+
+  // mise Ã  jour de l'image
+  image2.src = localhost + data.url + "?" + Math.random();
+
+  // mise Ã  jour des valeurs affichÃ©es
+  x.innerHTML = x.value = scene.sources[0].position.x.toFixed(2);
+  y.innerHTML = y.value = scene.sources[0].position.y.toFixed(2);
+  z.innerHTML = z.value = scene.sources[0].position.z.toFixed(2);
+}
+
+/*
+** RÃ©cupÃ©ration de la liste des scÃ¨nes
+*/
+var scenes = {};
+var localhost = "http://localhost:8080";
+var r = new XMLHttpRequest();
+r.onload = function() {
+  data = JSON.parse(this.responseText);
+
+  // mise en place des donnÃ©es locales (liste de scÃ¨nes)
+  for ( n=0; n < data.length; n++ ) {
+     scene = JSON.parse(data[n].serial)
+     console.log(n,scene);
+     if ( n == 0 ) current_scene = scene.name
+     scenes[scene.name] = { url: data[n].url, name: data[n].name, info: scene };
+  }
+
+  // mise Ã  jour de la scÃ¨ne
+  change_scene();
+}
+r.open("GET",localhost + "/service/scene",true);
+r.send();
+
+
+/*
+** Gestionnaire d'Ã©vÃ©nement pour choix d'une scÃ¨ne
+*/
+scene_list.onchange = function() {
+  current_scene = this.value;
+  change_scene();
+}
+change_scene = function () {
+  var r = new XMLHttpRequest();
+  r.onload = update_image;
+  r.open("GET",localhost + "/service/scene/" + current_scene,true);
+  r.send();
+}
+    </script>
+-->
 </body>
 
 </html>
