@@ -51,10 +51,10 @@ class Voiture(ComposedArtifact):
         h1 = 0.1
         h2 = -0.1
 
-        roue0 = Cylinder(P[0], V, r, h2, diffuse=rgb(124,117,117), mirror=0, specular=0)
-        roue1 = Cylinder(P[1], V, r, h2, diffuse=rgb(124,117,117), mirror=0, specular=0)
-        roue2 = Cylinder(P[2], V, r, h1, diffuse=rgb(124,117,117), mirror=0, specular=0)
-        roue3 = Cylinder(P[3], V, r, h1, diffuse=rgb(124,117,117), mirror=0, specular=0)
+        roue0 = Cylinder(P[0], V, r, h2, diffuse=rgb(0.484,0.457,0.457), mirror=0, specular=0)
+        roue1 = Cylinder(P[1], V, r, h2, diffuse=rgb(0.484,0.457,0.457), mirror=0, specular=0)
+        roue2 = Cylinder(P[2], V, r, h1, diffuse=rgb(0.484,0.457,0.457), mirror=0, specular=0)
+        roue3 = Cylinder(P[3], V, r, h1, diffuse=rgb(0.484,0.457,0.457), mirror=0, specular=0)
 
         U = vec3(1,0,0)
         V = vec3(0,0,1) # axe sur lequel il sera projété
@@ -67,11 +67,11 @@ class Voiture(ComposedArtifact):
         C4 = vec3(x0-0.3,y0+0.2,z0+0.1)
         C5 = vec3(x0-0.3,y0+0.2,z0-0.1)
         
-        cube1 = Cube(C1, U, V, l1, diffuse=rgb(1,0,0), mirror=0, specular=0)
-        cube2 = Cube(C2, U, V, l2, diffuse=rgb(1,0,0), mirror=0, specular=0)
-        cube3 = Cube(C3, U, V, l2, diffuse=rgb(1,0,0), mirror=0, specular=0)
-        cube4 = Cube(C4, U, V, l2, diffuse=rgb(1,0,0), mirror=0, specular=0)
-        cube5 = Cube(C5, U, V, l2, diffuse=rgb(1,0,0), mirror=0, specular=0)
+        cube1 = Cube(C1, U, V, l1, diffuse=rgb(0.9,0.1,0.1), mirror=0, specular=0)
+        cube2 = Cube(C2, U, V, l2, diffuse=rgb(0.9,0.1,0.1), mirror=0, specular=0)
+        cube3 = Cube(C3, U, V, l2, diffuse=rgb(0.9,0.1,0.1), mirror=0, specular=0)
+        cube4 = Cube(C4, U, V, l2, diffuse=rgb(0.9,0.1,0.1), mirror=0, specular=0)
+        cube5 = Cube(C5, U, V, l2, diffuse=rgb(0.9,0.1,0.1), mirror=0, specular=0)
 
         for j in range(3):
             self[j]=roue0[j]
@@ -98,6 +98,7 @@ scene.append(Plane(vec3(0,-0.1,0), vec3(0,1,0)))
 scene.append(Voiture(0,0,0,diffuse=rgb(0.95,0.73,0.43), mirror=0, specular=0))
 scene.initialize(E=vec3(0,2,-10)).trace().save_image()
 pass
+
 
 #################################################################
 
@@ -142,8 +143,8 @@ class Sapin(ComposedArtifact):
     def __init__(self, x0, y0, z0, taille, *args,**kwargs):
         
         ComposedArtifact.__init__(self,4,*args,**kwargs)
-        cyl = Cylinder(vec3(x0,y0,z0), vec3(0,1,0).rotate_x(-0.15),taille/3,1.3*taille, diffuse=rgb(184,115,51), mirror=0, specular=0)
-        cone = ConeTrunk(vec3(x0,y0+3*taille,z0),vec3(0,-1,0), 2.5*taille, 2*taille, rgb(0,255,0))
+        cyl = Cylinder(vec3(x0,y0,z0), vec3(0,1,0).rotate_x(-0.15),taille/3,1.3*taille, diffuse=rgb(0.9,0.5,0.1), mirror=0, specular=0)
+        cone = ConeTrunk(vec3(x0,y0+3*taille,z0),vec3(0,-1,0), 2.5*taille, 2*taille, diffuse=rgb(0.1,0.9,0.1), mirror=0, specular=0)
         
         for j in range (3):
             self[j] = cyl[j]
