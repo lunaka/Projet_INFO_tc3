@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="INF tc3 - Projet">
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <title> Editeur de scène </title>
+</head>
+
+<body>
+    <header id="hr">
+        <h1>Editeur de scène</h1>
+        <h2>INF tc3 - Projet d'application WEB</h2>
+    </header>
+    <main id="mn">
+        <div id="Scène">
+            <figure id="scene"><img src="/image/scene_courante.png"></figure>
+            <!---
+            <canvas id="myCanvas" style="width:600px; height:600px; border:1px solid #ddd"></canvas>
+            -->
+            <figcaption>Scène</figcaption>
+        </div>
+    </main>
+<!--
+    <script type="text/javascript">
+    var c=document.getElementById("myCanvas");
+    var cxt=c.getContext("2d");
+    var img=new Image()
+    img.src="/image/scene_courante.png"
+    cxt.drawImage(img,0,0);
+</script>
+-->
+    <aside id="ae">
+        <div id="Eléments">
+            Eléments
+            <br>
+            <figure id="Arbre"><img src="Arbre.png" alt="Arbre"><figcaption>Arbre</figcaption></figure>
+            <figure id="Pyramid"><img src="Pyramid.png" alt="Pyramid"><figcaption>Pyramid</figcaption></figure>
+            <figure id="Maison"><img src="Maison.png" alt="Maison"><figcaption>Maison</figcaption></figure>
+            <figure id="Cylindre"><img src="Cylindre.png" alt="Cylindre"><figcaption>Cylindre</figcaption></figure>
+            <figure id="Sapin"><img src="Sapin.png" alt="Sapin"><figcaption>Sapin</figcaption></figure>
+            <figure id="Voiture"><img src="Voiture.png" alt="Voiture"><figcaption>Voiture</figcaption></figure>
+        </div>
+    </aside>
+    <div id="form">
+        <form action="http://localhost:8080/service" method="POST">
+            <fieldset>
+                <legend>Attributs</legend>
+                <label>Elément: <select id="Choix_éléments" name="Eléments">
+                    <option>Arbre</option>
+                    <option>Pyramid</option>
+                    <option>Maison</option>
+                    <option>Cylindre</option>
+                    <option>Sapin</option>
+                    <option>Voiture</option>
+                </select></label><br>
+                <!--<label>alpha: <input id="alpha" type="number" name="alpha" /></label>-->
+                <label>x: <input id="x" type="number" name="x" min=-0.8 max=0.8 step=0.05></label><br>
+                <label>y: <input id="y" type="number" name="y" min=-0.8 max=0.8 step=0.05></label><br>
+                <label>z: <input id="z" type="number" name="z" min=-0.8 max=0.8 step=0.05></label><br>
+                <label>Taille: <input id="Taille" type="number" name="taille" min= 0.07 max=0.25 step = 0.02></label><br>
+                <!--
+                <label>Couleur: <input id="Couleur" type="color" name="couleur"></label>
+            -->
+                <input id="Réinitialiser" type="reset" value="Réinitialiser">
+                <input type="submit" value="Envoyer">
+            </fieldset>
+        </form>
+    </div>
+    <footer id="ftr">
+        <h3>Groupe B1a - Projet d'application WEB - INF tc3</h3>
+    </footer>
+
+</body>
+
+</html>
