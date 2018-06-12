@@ -5,17 +5,17 @@
 #################################################################
 
 class Maison(ComposedArtifact):
-    def __init__(self,*args,**kwargs):
+    def __init__(self,x0,y0,z0,*args,**kwargs):
         
         ComposedArtifact.__init__(self,11,*args,**kwargs)
         U = vec3(1,0,0)
         V = vec3(0,1,0) # axe sur lequel il sera projété
-        C = vec3(0,0,0)
+        C = vec3(x0+0,y0+0,z0+0)
         l = 0.3
         
         cube = Cube(C, U, V, l, diffuse=rgb(0.65,0.27,0.25), mirror=0, specular=0)
-        S = vec3(0,0.5,0.5) # Coordonnées entre -1 et 1 (x = horizontal, y = verticale, z = sens de la page)
-        vertices = [vec3(-0.2,0.2,-0.2), vec3(0.2,0.2,-0.2), vec3(0.2,0.2,0.2), vec3(-0.2,0.2,0.2)]
+        S = vec3(0+x0,y0+0.5,z0+0.5) # Coordonnées entre -1 et 1 (x = horizontal, y = verticale, z = sens de la page)
+        vertices = [vec3(x0-0.2,y0+0.2,z0-0.2), vec3(x0+0.2,y0+0.2,z0-0.2), vec3(x0+0.2,y0+0.2,z0+0.2), vec3(x0-0.2,y0+0.2,z0+0.2)]
         base = Polygon2(vertices, 1, diffuse=rgb(0.5,0.5,0), mirror=0, specular=0)
         
         pyr = Pyramid(base, S, diffuse=rgb(0.9,0.5,0.1), mirror=0, specular=0)
@@ -28,7 +28,7 @@ class Maison(ComposedArtifact):
 scene = Scene('Maison', 0, 1)
 scene.append(LightSource(vec3(-1., 2, -3), 1))
 scene.append(Plane(vec3(0,-0.1,0), vec3(0,1,0)))
-scene.append(Maison(diffuse=rgb(0.9,0.5,0.1), mirror=0, specular=0))
+scene.append(Maison(0,0,0,diffuse=rgb(0.9,0.5,0.1), mirror=0, specular=0))
 
 scene.initialize(E=vec3(0,2,-10)).trace().save_image()
 pass
@@ -40,11 +40,11 @@ pass
 #################################################################
 
 class Voiture(ComposedArtifact):
-    def __init__(self,*args,**kwargs):
+    def __init__(self,x0,y0,z0,*args,**kwargs):
         
         ComposedArtifact.__init__(self,42,*args,**kwargs)
 
-        P = [vec3(-0.3,0.1,-0.2), vec3(0.3,0.1,-0.2), vec3(-0.3,0.1,0.2), vec3(0.3,0.1,0.2)]
+        P = [vec3(-0.3+x0,0.1+y0,-0.2+z0), vec3(0.3+x0,0.1+y0,-0.2+z0), vec3(x0-0.3,y0+0.1,z0+0.2), vec3(x0+0.3,y0+0.1,z0+0.2)]
         V = vec3(0,0,1) # axe sur lequel il sera projété
         r = 0.1
         h1 = 0.1
@@ -57,14 +57,14 @@ class Voiture(ComposedArtifact):
 
         U = vec3(1,0,0)
         V = vec3(0,0,1) # axe sur lequel il sera projété
-        C1 = vec3(0,0.3,0)
+        C1 = vec3(x0+0,y0+0.3,z0+0)
         l1 = 0.4
 
-        C2 = vec3(0.3,0.2,-0.1)
+        C2 = vec3(0.3+x0,y0+0.2,z0-0.1)
         l2 = 0.2
-        C3 = vec3(0.3,0.2,0.1)
-        C4 = vec3(-0.3,0.2,0.1)
-        C5 = vec3(-0.3,0.2,-0.1)
+        C3 = vec3(x0+0.3,y0+0.2,z0+0.1)
+        C4 = vec3(x0-0.3,y0+0.2,z0+0.1)
+        C5 = vec3(x0-0.3,y0+0.2,z0-0.1)
         
         cube1 = Cube(C1, U, V, l1, diffuse=rgb(1,0,0), mirror=0, specular=0)
         cube2 = Cube(C2, U, V, l2, diffuse=rgb(1,0,0), mirror=0, specular=0)
@@ -94,7 +94,7 @@ class Voiture(ComposedArtifact):
 scene = Scene('Voiture', 0, 1)
 scene.append(LightSource(vec3(-1., 2, -3), 1))
 scene.append(Plane(vec3(0,-0.1,0), vec3(0,1,0)))
-scene.append(Voiture(diffuse=rgb(0.95,0.73,0.43), mirror=0, specular=0))
+scene.append(Voiture(0,0,0,diffuse=rgb(0.95,0.73,0.43), mirror=0, specular=0))
 scene.initialize(E=vec3(0,2,-10)).trace().save_image()
 pass
 
@@ -105,12 +105,14 @@ pass
 #################################################################
 
 class Arbre(ComposedArtifact):
-    def __init__(self,P,*args,**kwargs):
+    def __init__(self,x0,y0,z0,*args,**kwargs):
         ComposedArtifact.__init__(self,4,*args,**kwargs)
         # Coordonnées entre -1 et 1 (x = horizontal, y = verticale, z = sens de la page)
         V = vec3(0,1,0) # axe sur lequel il sera projété
         r = 0.1
         h = 4*r
+        P = vec3(x0,y0-0.05,z0)
+        
         cyl = Cylinder(P, V, r, h, diffuse=rgb(0.9,0.5,0.1), mirror=0, specular=0)
         
         center = P + vec3(0,h,0) # Coordonnées entre -1 et 1 (x = horizontal, y = verticale, z = sens de la page)
@@ -124,7 +126,32 @@ class Arbre(ComposedArtifact):
 scene = Scene('Arbre', 0, 1)
 scene.append(LightSource(vec3(-2., 1, -2), 1))
 scene.append(Plane(vec3(0,-0.1,0), vec3(0,1,0)))
-scene.append(Arbre(vec3(0,0,0),diffuse=rgb(0.9,0.5,0.1), mirror=0, specular=0))
+scene.append(Arbre(0,0,0,diffuse=rgb(0.9,0.5,0.1), mirror=0, specular=0))
+
+scene.initialize(E=vec3(0,2,-10)).trace().save_image()
+pass
+
+#################################################################
+
+#Sapin
+
+#################################################################
+
+class Sapin(ComposedArtifact):
+    def __init__(self, x0, y0, z0, taille, *args,**kwargs):
+        
+        ComposedArtifact.__init__(self,4,*args,**kwargs)
+        cyl = Cylinder(vec3(x0,y0,z0), vec3(0,1,0).rotate_x(-0.15),taille/3,1.3*taille, diffuse=rgb(184,115,51), mirror=0, specular=0)
+        cone = ConeTrunk(vec3(x0,y0+3*taille,z0),vec3(0,-1,0), 2.5*taille, 2*taille, rgb(0,255,0))
+        
+        for j in range (3):
+            self[j] = cyl[j]
+        self[3] = cone
+
+scene = Scene('Sapin', 0, 1)
+scene.append(LightSource(vec3(-1., 2, -3), 1))
+scene.append(Plane(vec3(0,-0.1,0), vec3(0,1,0)))
+scene.append(Sapin(0, -0.1, 0, 0.15, diffuse=rgb(0.9,0.5,0.1), mirror=0, specular=0))
 
 scene.initialize(E=vec3(0,2,-10)).trace().save_image()
 pass
