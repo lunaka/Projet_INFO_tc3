@@ -17,7 +17,7 @@
     <main id="mn">
         <div id="Scene">
             Scène<br>
-            <figure id="scene"><img src="/image/scene_courante.png"></figure>
+            <figure id="scene"><img src="image/scene_courante.png"></figure>
             <!--
             <canvas id="myCanvas" style="width:600px; height:600px; border:1px solid #ddd"></canvas>
         -->
@@ -37,7 +37,7 @@
             Eléments
             <br>
             <figure id="Arbre"><img class="im_pequ" src="image/Arbre.png" alt="Arbre"><figcaption>Arbre</figcaption></figure>
-            <figure id="Pyramid"><img class="im_pequ" src="image/Pyramid.png" alt="Pyramid"><figcaption>Pyramid</figcaption></figure>
+            <figure id="Pyramid"><img class="im_pequ" src="image/Pyramid.png" alt="Pyramid"><figcaption>Pyramide</figcaption></figure>
             <figure id="Maison"><img class="im_pequ" src="image/Maison.png" alt="Maison"><figcaption>Maison</figcaption></figure>
             <figure id="Cylindre"><img class="im_pequ" src="image/Cylindre.png" alt="Cylindre"><figcaption>Cylindre</figcaption></figure>
             <figure id="Sapin"><img class="im_pequ" src="image/Sapin.png" alt="Sapin"><figcaption>Sapin</figcaption></figure>
@@ -57,10 +57,10 @@
                     <option>Voiture</option>
                 </select></label><br>
                 <!--<label>alpha: <input id="alpha" type="number" name="alpha" /></label>-->
-                <label>x: <input id="x" type="number" name="x" /></label value = 0><br>
-                <label>y: <input id="y" type="number" name="y" /></label value = 0><br>
-                <label>z: <input id="z" type="number" name="z" /></label value = 0><br>
-                <label>Taille: <input id="Taille" type="number" name="taille"/ value = 0></label><br>
+                <label>x: <input id="x" type="number" name="x" value=0 min=-0.9 max=0.9 step=0.05 /></label><br>
+                <label>y: <input id="y" type="number" name="y" value=0 min=-0.4 max=0.4 step=0.05 /></label><br>
+                <label>z: <input id="z" type="number" name="z" value=0 min=-0.9 max=0.9 step=0.05 /></label><br>
+                <label>Taille: <input id="Taille" type="number" name="taille" value=1 min=0.0 max=5.0 step=0.1 /></label><br>
                 <!--
                 <label>Couleur: <input id="Couleur" type="color" name="couleur"></label>
             -->
