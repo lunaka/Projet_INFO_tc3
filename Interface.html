@@ -15,15 +15,16 @@
     </header>
     <hr> </hr>
     <main id="mn">
-        <div id="Scène">
+        <div id="Scene">
             Scène<br>
+            <figure id="scene"><img src="/image/scene_courante.png"></figure>
+            <figcaption>Scene</figcaption>
             <!--
-            <figure><img src="/image/scene_courante.png"></figure>
-        -->
             <canvas id="myCanvas" style="width:600px; height:600px; border:1px solid #ddd"></canvas>
+        -->
         </div>
     </main>
-
+<!--
     <script type="text/javascript">
     var c=document.getElementById("myCanvas");
     var cxt=c.getContext("2d");
@@ -31,24 +32,24 @@
     img.src="/image/scene_courante.png"
     cxt.drawImage(img,0,0);
 </script>
-
+-->
     <aside id="ae">
-        <div id="Eléments">
+        <div id="Elements">
             Eléments
             <br>
-            <figure id="Arbre"><img class="im_pequ" src="Arbre.png" alt="Arbre"><figcaption>Arbre</figcaption></figure>
-            <figure id="Pyramid"><img class="im_pequ" src="Pyramid.png" alt="Pyramid"><figcaption>Pyramid</figcaption></figure>
-            <figure id="Maison"><img class="im_pequ" src="Maison.png" alt="Maison"><figcaption>Maison</figcaption></figure>
-            <figure id="Cylindre"><img class="im_pequ" src="Cylindre.png" alt="Cylindre"><figcaption>Cylindre</figcaption></figure>
-            <figure id="Sapin"><img class="im_pequ" src="Sapin.png" alt="Sapin"><figcaption>Sapin</figcaption></figure>
-            <figure id="Voiture"><img class="im_pequ" src="Voiture.png" alt="Voiture"><figcaption>Voiture</figcaption></figure>
+            <figure id="Arbre"><img class="im_pequ" src="image/Arbre.png" alt="Arbre"><figcaption>Arbre</figcaption></figure>
+            <figure id="Pyramid"><img class="im_pequ" src="image/Pyramid.png" alt="Pyramid"><figcaption>Pyramid</figcaption></figure>
+            <figure id="Maison"><img class="im_pequ" src="image/Maison.png" alt="Maison"><figcaption>Maison</figcaption></figure>
+            <figure id="Cylindre"><img class="im_pequ" src="image/Cylindre.png" alt="Cylindre"><figcaption>Cylindre</figcaption></figure>
+            <figure id="Sapin"><img class="im_pequ" src="image/Sapin.png" alt="Sapin"><figcaption>Sapin</figcaption></figure>
+            <figure id="Voiture"><img class="im_pequ" src="image/Voiture.png" alt="Voiture"><figcaption>Voiture</figcaption></figure>
         </div>
     </aside>
     <div id="form">
         <form action="http://localhost:8080/service" method="POST">
             <fieldset>
                 <legend>Attributs</legend>
-                <label>Elément: <select id="Choix_éléments" name="Eléments">
+                <label>Elément: <select id="Choix_elements" name="Elements">
                     <option>Arbre</option>
                     <option>Pyramid</option>
                     <option>Maison</option>
@@ -57,15 +58,15 @@
                     <option>Voiture</option>
                 </select></label><br>
                 <!--<label>alpha: <input id="alpha" type="number" name="alpha" /></label>-->
-                <label>x: <input id="x" type="number" name="x" /></label><br>
-                <label>y: <input id="y" type="number" name="y" /></label><br>
-                <label>z: <input id="z" type="number" name="z" /></label><br>
-                <label>Taille: <input id="Taille" type="number" name="taille"/></label><br>
+                <label>x: <input id="x" type="number" name="x" /></label value = 0><br>
+                <label>y: <input id="y" type="number" name="y" /></label value = 0><br>
+                <label>z: <input id="z" type="number" name="z" /></label value = 0><br>
+                <label>Taille: <input id="Taille" type="number" name="taille"/ value = 0></label><br>
                 <!--
                 <label>Couleur: <input id="Couleur" type="color" name="couleur"></label>
             -->
-                <input id="Réinitialiser" type="reset" value="Réinitialiser">
-                <input id="Envoyer" type="submit" value="Envoyer">
+                <input id="Reinitialiser" type="reset" value="Reinitialiser" name = forme>
+                <input id="Envoyer" type="submit" value="Envoyer" name = forme>
             </fieldset>
         </form>
     </div>
@@ -106,7 +107,6 @@
             ctx.drawImage(img,100,100);
             }
         }
-
         </script>
     -->
     <!--
@@ -117,16 +117,13 @@
 var update_image = function() {
   data = JSON.parse(this.responseText);
   scene = JSON.parse(data.serial);
-
   // mise Ã  jour de l'image
   image2.src = localhost + data.url + "?" + Math.random();
-
   // mise Ã  jour des valeurs affichÃ©es
   x.innerHTML = x.value = scene.sources[0].position.x.toFixed(2);
   y.innerHTML = y.value = scene.sources[0].position.y.toFixed(2);
   z.innerHTML = z.value = scene.sources[0].position.z.toFixed(2);
 }
-
 /*
 ** RÃ©cupÃ©ration de la liste des scÃ¨nes
 */
@@ -135,7 +132,6 @@ var localhost = "http://localhost:8080";
 var r = new XMLHttpRequest();
 r.onload = function() {
   data = JSON.parse(this.responseText);
-
   // mise en place des donnÃ©es locales (liste de scÃ¨nes)
   for ( n=0; n < data.length; n++ ) {
      scene = JSON.parse(data[n].serial)
@@ -143,14 +139,11 @@ r.onload = function() {
      if ( n == 0 ) current_scene = scene.name
      scenes[scene.name] = { url: data[n].url, name: data[n].name, info: scene };
   }
-
   // mise Ã  jour de la scÃ¨ne
   change_scene();
 }
 r.open("GET",localhost + "/service/scene",true);
 r.send();
-
-
 /*
 ** Gestionnaire d'Ã©vÃ©nement pour choix d'une scÃ¨ne
 */
