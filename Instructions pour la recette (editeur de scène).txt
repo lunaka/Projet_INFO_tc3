@@ -1,0 +1,17 @@
+Installation d'editeur de scène
+
+Fichiers necessaires:
+
+1.- server.py : dossier python regroupant les codes nécessaires à l'élaboration du server
+2.- raytracing.py: objets à utiliser 
+3.- base_donnes.py : base de données utilisée
+4.- client : fichier contienant interface.html et style.css. Aussi il contiene des images et polices.
+5.- Instructions et cahier des charges
+
+IMPORTANT: N'oubliez pas d'enregistrer tout dans un même dossier
+
+Intructions pour lancer le projet:
+
+1.- Ouvrir server.py et lancer
+2.- Aller dans votre navigateur et entrer dans : localhost:8080/interface.html
+3.- Rentrer les paramètres et apouyer sur "envoyer". Maintenant à vous de jouer!
